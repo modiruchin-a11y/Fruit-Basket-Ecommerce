@@ -55,7 +55,7 @@ Fruit Basket is a modern e-commerce web application built with **Django**, **Pos
 ### Admin Dashboard
 
 
-![Admin](screenshot/admin.png)
+![Admin](screenshot/Admin.png)
 
 ---
 
@@ -126,7 +126,7 @@ Fruit-Basket/
 
 **Modi Ruchin**
 
-GitHub: https://github.com/YOUR_USERNAME
+GitHub: https://github.com/modiruchin-a11y
 
 Portfolio: https://portfolio-ruz1.onrender.com
 
