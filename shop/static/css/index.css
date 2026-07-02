@@ -1,0 +1,182 @@
+/* ==========================================
+   Search Bar Custom Styling
+=========================================== */
+.search-form {
+    background: #fff;
+    padding: 6px;
+    border-radius: 50px;
+    border: 1px solid #e0e0e0;
+}
+
+.search-form .form-control {
+    border-radius: 50px;
+    box-shadow: none !important;
+    padding-left: 20px;
+}
+
+.search-form .btn-warning {
+    border-radius: 50px;
+    background-color: #f4b400;
+    border-color: #f4b400;
+    color: #fff;
+}
+
+/* ==========================================
+   Category Scrolling System
+=========================================== */
+.category-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.category-scroll-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.category-btn {
+    padding: 10px 24px;
+    border: 2px solid #f4b400;
+    color: #f4b400;
+    border-radius: 30px;
+    font-weight: 600;
+    background-color: #ffffff;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.category-btn:hover {
+    background-color: #f4b400;
+    color: #ffffff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(244, 180, 0, 0.2);
+}
+
+.active-btn {
+    background-color: #f4b400;
+    color: #ffffff !important;
+}
+
+/* ==========================================
+   Modern Fruit Cards Layout
+=========================================== */
+.fruit-card {
+    border-radius: 20px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    background: #ffffff;
+}
+
+.fruit-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08) !important;
+}
+
+.img-container{
+    height:250px;
+    background:#fff;
+}
+
+.fruit-img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+}
+
+.fruit-card:hover .fruit-img {
+    transform: scale(1.06);
+}
+
+/* Card Typography & Inner Elements */
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #212529;
+}
+
+.description {
+    color: #6c757d;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.price-tag {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #fc5d35;
+}
+
+.qty-badge {
+    background-color: #e9ecef;
+    color: #495057;
+    font-size: 0.85rem;
+    padding: 6px 12px;
+    border-radius: 20px;
+}
+
+/* Buy Button Styling */
+.btn-buy {
+    background-color: #fc5d35;
+    color: #ffffff;
+    border-color: #fc5d35;
+    border-radius: 50px;
+    padding: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.25s ease;
+}
+
+.btn-buy:hover {
+    background-color: #e84b24;
+    border-color: #e84b24;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(252, 93, 53, 0.3);
+}
+
+.toggle-btn {
+    font-size: 13px;
+    font-weight: 600;
+    color: #fc5d35 !important;
+}
+
+/* ==========================================
+   Responsive Grid & Mobile View Settings
+=========================================== */
+@media (max-width: 991px) {
+    .category-scroll-container {
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding: 5px 0 15px 0;
+    }
+    
+    /* Hide horizontal scrollbar for clean design */
+    .category-scroll-container::-webkit-scrollbar {
+        display: none;
+    }
+    .category-scroll-container {
+        -ms-overflow-style: none;  
+        scrollbar-width: none;  
+    }
+
+    .category-btn {
+        padding: 8px 18px;
+        font-size: 14px;
+        white-space: nowrap; /* Button elements single line me rahenge */
+    }
+}
+
+@media (max-width: 576px) {
+    .fruit-img {
+        height: 190px;
+    }
+
+    .card-title {
+        font-size: 1.15rem;
+    }
+
+    .price-tag {
+        font-size: 1.15rem;
+    }
+}

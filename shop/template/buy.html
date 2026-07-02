@@ -1,0 +1,92 @@
+{% extends 'nav/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container my-5">
+
+{% for item in items %}
+
+<div class="card shadow mb-4 p-3">
+
+    <div class="row align-items-center g-3">
+
+        <!-- Image -->
+       <div class="col-4 col-md-4 d-flex justify-content-center align-items-center">
+
+    <img src="{{ item.image.url }}"
+         class="img-fluid rounded"
+         style="max-height:180px; width:auto; object-fit:contain;">
+
+</div>
+        <!-- Details -->
+        <div class="col-8 col-md-8">
+
+            <h5 class="fw-bold">{{ item.name }}</h5>
+
+            <h6 class="text-success">
+                ₹{{ item.price }}
+            </h6>
+
+            <div class="d-flex align-items-center my-2">
+
+                <a href="{% url 'decrease_qty' item.id %}"
+                   class="btn btn-danger btn-sm">
+                    -
+                </a>
+
+                <span class="mx-3 fw-bold">
+                    {{ item.quantity }}
+                </span>
+
+                <a href="{% url 'increase_qty' item.id %}"
+                   class="btn btn-success btn-sm">
+                    +
+                </a>
+
+            </div>
+
+            <h6 class="mb-2">
+                Total : ₹{{ item.total_price }}
+            </h6>
+
+            <a href="{% url 'remove' item.id %}"
+               class="btn btn-outline-danger btn-sm">
+                Remove
+            </a>
+
+        </div>
+
+    </div>
+
+    <hr>
+
+    <h6>Description</h6>
+
+    <p class="mb-0">
+        {{ item.cart_item.description }}
+    </p>
+
+</div>
+
+{% empty %}
+
+<h3 class="text-center">
+
+No Product Found
+
+</h3>
+
+{% endfor %}
+
+<div class="text-end">
+
+<h2>
+
+Grand Total : ₹{{ total }}
+
+</h2>
+<a href="{% url 'checkout' %}"  class="btn btn-warning">Checkout</a>
+</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,118 @@
+{% extends 'admin_panel/admin_base.html' %}
+
+{% block content %}
+
+<div class="container">
+
+<h2 class="mb-4">Orders</h2>
+
+<div class="card shadow">
+
+<div class="card-body">
+
+<table class="table table-bordered table-hover">
+
+<thead class="table-warning">
+
+<tr>
+
+<th>ID</th>
+<th>Customer</th>
+<th>Total</th>
+<th>Payment</th>
+<th>Status</th>
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for order in orders %}
+
+<tr>
+
+<td>#{{ order.id }}</td>
+
+<td>{{ order.name }}</td>
+
+<td>₹{{ order.total_amount }}</td>
+
+<td>{{ order.payment_method }}</td>
+
+<td>
+
+{% if order.status == "PENDING" %}
+
+<span class="badge bg-warning text-dark">
+Pending
+</span>
+
+{% elif order.status == "CONFIRMED" %}
+
+<span class="badge bg-primary">
+Confirmed
+</span>
+
+{% elif order.status == "SHIPPED" %}
+
+<span class="badge bg-info text-dark">
+Shipped
+</span>
+
+{% elif order.status == "DELIVERED" %}
+
+<span class="badge bg-success">
+Delivered
+</span>
+
+{% elif order.status == "CANCELLED" %}
+
+<span class="badge bg-danger">
+Cancelled
+</span>
+
+{% endif %}
+
+</td>
+
+<td>
+
+<a href="{% url 'order_details' order.id %}"
+
+class="btn btn-primary btn-sm">
+
+View
+
+</a>
+
+</td>
+
+</tr>
+
+{% empty %}
+
+<tr>
+
+<td colspan="6" class="text-center">
+
+No Orders Found
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

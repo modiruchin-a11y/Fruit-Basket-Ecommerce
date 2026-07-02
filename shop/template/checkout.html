@@ -1,0 +1,179 @@
+{% extends 'nav/base.html'%}
+{% load static %}
+{% block content %}
+
+
+<div class="container my-5">
+
+    <div class="row">
+
+        <!-- LEFT SIDE -->
+        <div class="col-12 col-lg-7 order-2 order-lg-1">
+
+            <!-- Checkout Form -->
+            <div class="card shadow p-4 rounded-4">
+
+                <h3 class="mb-4">Checkout</h3>
+
+                <form method="POST">
+
+                    {% csrf_token %}
+
+                    <div class="mb-3">
+                        <label>Name</label>
+                        <input type="text"
+                               class="form-control"
+                               value="{{ name }}"
+                               readonly>
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Email</label>
+                        <input type="email"
+                               class="form-control"
+                               value="{{ email }}"
+                               readonly>
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Contact</label>
+                        <input type="text"
+                               class="form-control"
+                               value="{{ contact }}"
+                               readonly>
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Delivery Address</label>
+                        <textarea
+                            class="form-control"
+                            rows="4"
+                            name="address"
+                            required></textarea>
+                    </div>
+
+                    <div class="mb-4">
+
+                        <label class="fw-bold">
+                            Payment Method
+                        </label>
+
+                        <div class="form-check">
+
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="payment_method"
+                                value="COD"
+                                checked>
+
+                            <label class="form-check-label">
+
+                                Cash On Delivery
+
+                            </label>
+
+                        </div>
+
+
+                    </div>
+
+                    <button
+                        class="btn btn-success w-100">
+
+                        Place Order
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT SIDE -->
+
+       <div class="col-12 col-lg-5 order-1 order-lg-2 mb-4 mb-lg-0">
+
+            <div class="card shadow rounded-4 mb-4">
+
+                <div class="card-header bg-warning">
+
+                    <h4 class="mb-0">
+
+                        Order Summary
+
+                    </h4>
+
+                </div>
+
+                <div class="card-body">
+
+                    {% for item in cart_items %}
+
+                    <div class="d-flex mb-3">
+
+                        <img src="{{ item.cart_item.image.url }}"
+                             width="70"
+                             height="70"
+                             class="rounded">
+
+                        <div class="ms-3">
+
+                            <h6>
+
+                                {{ item.cart_item.name }}
+
+                            </h6>
+
+                            <small>
+
+                                ₹{{ item.cart_item.price }}
+
+                                ×
+
+                                {{ item.quantity }}
+
+                            </small>
+
+                            <br>
+
+                            <strong>
+
+                                ₹{{ item.total_price }}
+
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                    <hr>
+
+                    {% endfor %}
+
+                    <div class="d-flex justify-content-between">
+
+                        <h5>Total</h5>
+
+                        <h5>
+
+                            ₹{{ total_amount }}
+
+                        </h5>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="{% static 'js/checkout.js'%}"></script>
+
+{% endblock %}

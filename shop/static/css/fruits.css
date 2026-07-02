@@ -1,0 +1,105 @@
+/* Category Buttons */
+.category-btn {
+    margin: 5px;
+    padding: 10px 25px;
+    border: 2px solid #fccd35;
+    color: #fcde35;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+.category-btn:hover {
+    background-color: #fce835;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.active-btn {
+    background-color: #fcd135;
+    color: white;
+}
+
+/* Card */
+.card {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Fruit Image */
+.fruit-img {
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* Card Body */
+.card-body {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #333;
+}
+
+.description {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Price */
+.card-text.fw-bold {
+    font-size: 1.1rem;
+    color: #fc5d35;
+    margin-bottom: 8px;
+}
+
+/* Buy Button */
+.btn-primary {
+    background-color: #fc5d35;
+    border-color: #fc5d35;
+    border-radius: 30px;
+    padding: 10px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #e84b24;
+    border-color: #e84b24;
+}
+
+/* Show More Link */
+.toggle-btn {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .fruit-img {
+        height: 200px;
+    }
+
+    .category-btn {
+        display: inline-block;
+        margin-bottom: 10px;
+        padding: 8px 18px;
+        font-size: 14px;
+    }
+
+    .card-title {
+        font-size: 1.1rem;
+    }
+}

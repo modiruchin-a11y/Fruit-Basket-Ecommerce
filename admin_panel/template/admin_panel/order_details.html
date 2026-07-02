@@ -1,0 +1,251 @@
+{% extends 'admin_panel/admin_base.html' %}
+
+{% block content %}
+
+<div class="container">
+
+<h2 class="mb-4">
+
+Order Details
+
+</h2>
+
+<div class="row">
+
+<div class="col-lg-6">
+
+<div class="card shadow mb-4">
+
+<div class="card-header bg-warning">
+
+<h5>Customer Information</h5>
+
+</div>
+
+<div class="card-body">
+
+<p><strong>Name :</strong> {{ order.name }}</p>
+
+<p><strong>Email :</strong> {{ order.email }}</p>
+
+<p><strong>Contact :</strong> {{ order.numbers }}</p>
+
+<p><strong>Address :</strong> {{ order.address }}</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-lg-6">
+
+<div class="card shadow mb-4">
+
+<div class="card-header bg-success text-white">
+
+<h5>Order Summary</h5>
+
+</div>
+
+<div class="card-body">
+
+<p>
+
+<strong>Order ID :</strong>
+
+#{{ order.id }}
+
+</p>
+
+<p>
+
+<strong>Total :</strong>
+
+₹{{ order.total_amount }}
+
+</p>
+
+<p>
+
+<strong>Payment :</strong>
+
+{{ order.payment_method }}
+
+</p>
+
+<p>
+
+<strong>Status :</strong>
+
+{{ order.status }}
+
+</p>
+
+<hr>
+
+<form method="POST">
+
+{% csrf_token %}
+
+<label class="form-label">
+
+Change Status
+
+</label>
+
+<select
+name="status"
+class="form-select mb-3">
+
+<option value="PENDING"
+{% if order.status == "PENDING" %}selected{% endif %}>
+Pending
+</option>
+
+<option value="CONFIRMED"
+{% if order.status == "CONFIRMED" %}selected{% endif %}>
+Confirmed
+</option>
+
+<option value="SHIPPED"
+{% if order.status == "SHIPPED" %}selected{% endif %}>
+Shipped
+</option>
+
+<option value="DELIVERED"
+{% if order.status == "DELIVERED" %}selected{% endif %}>
+Delivered
+</option>
+
+<option value="CANCELLED"
+{% if order.status == "CANCELLED" %}selected{% endif %}>
+Cancelled
+</option>
+
+</select>
+
+<button
+class="btn btn-success">
+
+Update Status
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="card shadow">
+
+<div class="card-header bg-dark text-white">
+
+<h5>
+
+Ordered Products
+
+</h5>
+
+</div>
+
+<div class="card-body">
+
+<table class="table table-bordered">
+
+<thead>
+
+<tr>
+
+<th>Image</th>
+
+<th>Product</th>
+
+<th>Price</th>
+
+<th>Qty</th>
+
+<th>Total</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for item in order_items %}
+
+<tr>
+
+<td>
+
+<img
+src="{{ item.product.image.url }}"
+width="70">
+
+</td>
+
+<td>
+
+{{ item.product.name }}
+
+</td>
+
+<td>
+
+₹{{ item.price }}
+
+</td>
+
+<td>
+
+{{ item.quantity }}
+
+</td>
+
+<td>
+
+₹{{ item.total_price }}
+
+</td>
+
+</tr>
+
+{% empty %}
+
+<tr>
+
+<td colspan="5">
+
+No Products Found
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<a
+href="{% url 'orders' %}"
+class="btn btn-secondary mt-3">
+
+Back
+
+</a>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'nav/base.html'%}
+{% load static %}
+{% block content %}
+
+
+<link rel="stylesheet" href="{% static 'css/Register.css' %}">
+
+<div class="auth-container">
+
+    <h1>Signup</h1>
+
+    <form class="auth-form" method="POST">
+        {% csrf_token %}
+
+        <div class="name-inputs">
+            <input type="text" name="fname" placeholder="First Name">
+            <input type="text" name="lname" placeholder="Last Name">
+        </div>
+
+        <div class="name-inputs">
+            <input type="text" name="username" placeholder="Username">
+            <input type="email" name="email" placeholder="Email">
+            <input type="tel" name="contact" placeholder="contact" maxlength="10" required>
+        </div>
+
+        <input type="password" name="pass1" placeholder="Password">
+         {% if messages %}
+         {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        <input type="password" name="pass2" placeholder="Confirm Password">
+
+        <button type="submit">Signup</button>
+    </form>
+
+    <div class="login-link">
+        Already have an account?
+        <a href="{% url 'login' %}">Login</a>
+    </div>
+
+</div>
+
+{% endblock %}
