@@ -117,7 +117,7 @@ def signout(request):
 
 
 
-
+@login_required(login_url='login')
 def buy(request, id):
     user = request.user
     product = Product.objects.get(id=id)
@@ -135,13 +135,11 @@ def buy(request, id):
         )
     return redirect("show_buy")
 
+@login_required(login_url='login')
 def show_buy(request):
     items = Cart.objects.filter(user=request.user)
     total = sum(i.total_price for i in items)
-    return render(request,"buy.html",{
-        "items":items,
-        "total":total
-    })
+    return render(request,"buy.html",{"items":items,"total":total})
     
     
 def increase_qty(request,id):
