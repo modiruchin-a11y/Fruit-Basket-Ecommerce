@@ -96,17 +96,19 @@ def signup(request):
     return render(request,'Register/signup.html')
 
 def login(request):
-    if request.method=="POST":
-        username=request.POST["username"]
-        pass1=request.POST['pass1']
-
-        user=authenticate(username=username,password=pass1)
+    if request.user.is_authenticated:
+        return redirect("index")
+    if request.method == "POST":
+        username = request.POST["username"]
+        pass1 = request.POST['pass1']
+        user = authenticate(username=username, password=pass1)
         if user is not None:
-            auth_user(request,user)
+            auth_user(request, user)
             return redirect("index")
         else:
-            return redirect("/")
-    return render(request,"Register/login.html")
+            return redirect("login")  # Galat details par login page par hi rakhna better hota hai
+            
+    return render(request, "Register/login.html")
 
 
 def signout(request):
