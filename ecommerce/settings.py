@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 import os
+import cloudinary
 import dj_database_url
 from pathlib import Path
 
@@ -40,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'shop',
     'admin_panel',
+    'cloudinary_storage',
+    'cloudinary'
 ]
 
 MIDDLEWARE = [
@@ -124,11 +127,11 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 
 STATIC_ROOT = BASE_DIR / "staticfiles"  # For production use with `collectstatic`
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
-
-
-
 # Path where media is stored
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
@@ -138,3 +141,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
+
+cloudinary.config(
+    cloud_name=os.environ.get("CLOUDINARY_CLOUD_NAME"),
+    api_key=os.environ.get("CLOUDINARY_API_KEY"),
+    api_secret=os.environ.get("CLOUDINARY_API_SECRET"),
+    secure=True,
+)
