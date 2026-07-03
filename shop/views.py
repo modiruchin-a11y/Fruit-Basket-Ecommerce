@@ -385,4 +385,4 @@ def search(request):
 
     }
 
-    return render(request, "fruits.html", context)
+    return render(request, "index.html", context)
