@@ -133,7 +133,7 @@ STATIC_ROOT = BASE_DIR / "staticfiles"  # For production use with `collectstatic
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 # Path where media is stored
-
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STORAGES = {
     "default": {
