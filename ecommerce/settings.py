@@ -150,8 +150,3 @@ cloudinary.config(
     secure=True,
 )
 
-STORAGES = {
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
-}
