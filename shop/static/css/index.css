@@ -168,15 +168,41 @@
 }
 
 @media (max-width: 576px) {
-    .fruit-img {
-        height: 190px;
+
+    .img-container{
+    height:230px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#fff;
+}
+    .fruit-img{
+    max-width:100%;
+    max-height:100%;
+    object-fit:contain;
+    transition:.3s;
+}
+
+    .card-body{
+        padding:12px !important;
     }
 
-    .card-title {
-        font-size: 1.15rem;
+    .card-title{
+        font-size:1rem;
+        margin-bottom:6px;
     }
 
-    .price-tag {
-        font-size: 1.15rem;
+    .description{
+        font-size:0.85rem;
+        margin-bottom:10px;
+    }
+
+    .price-tag{
+        font-size:1.05rem;
+    }
+
+    .btn-buy{
+        padding:9px;
+        font-size:0.9rem;
     }
 }
