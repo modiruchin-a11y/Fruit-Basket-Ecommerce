@@ -26,4 +26,5 @@ Thumbs.db
 *.log
 
 
+media/
 staticfiles/
